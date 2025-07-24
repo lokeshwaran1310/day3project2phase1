@@ -1,0 +1,205 @@
+Project Structure
+-----------------
+
+src/
+  main/
+    java/
+      interfaces/
+        Reportable.java
+      main/
+        IssueTrackerApplication.java
+      models/
+        bug.java
+        issue.java
+        task.java
+      com/
+        day3project2phase1/
+          App.java
+  test/
+    java/
+      com/
+        day3project2phase1/
+          AppTest.java
+
+
+Reportable.java
+---------------
+
+package interfaces;
+
+public interface  Reportable {
+    public void reportstatus();
+}
+
+
+issue.java
+----------
+
+package models;
+
+import interfaces.Reportable;
+
+public class issue implements Reportable{
+    private int id;
+    private String title;
+    private String desc;
+    private String raisedperson;
+    private String status;
+    public issue(int id,String title,String raisedperson,String desc){
+        this.id=id;
+        this.title=title;
+        this.desc=desc;
+        this.raisedperson=raisedperson;
+        this.status="Open";
+    }
+    public int getId() {
+        return id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public String getDesc() {
+        return desc;
+    }
+    public String getRaisedperson() {
+        return raisedperson;
+    }
+    public String getStatus() {
+        return status;
+    }
+    public void closestat(){
+        this.status="Closed";
+    }
+    public void display(){
+        System.out.println("Issue Id: "+getId());
+        System.out.println("Issue Title: "+getTitle());
+        System.out.println("Issue Description: "+getDesc());
+        System.out.println("Issue Status: "+getStatus());
+        System.out.println("Ticket Raised By: "+getRaisedperson());
+        System.out.println("---------------------------------------------------------");
+        
+    }
+    @Override
+  public void reportstatus(){
+  }
+}
+
+bug.java
+--------
+
+package models;
+
+import interfaces.Reportable;
+
+public class bug extends issue implements Reportable {  
+    private String severity;
+    public bug(int id, String title, String raisedperson, String desc,String severity) {
+        super(id, title, raisedperson, desc);
+        this.severity=severity;
+    }
+    public String getSeverity() {
+        return severity;
+    }
+    
+    @Override
+    public void display(){
+         super.display();
+    }
+    @Override
+    public void reportstatus(){
+        System.out.println("Issue ID: "+getId()+" Severity Level: "+getSeverity()+" Status: "+getStatus());
+    }
+
+    
+}
+
+
+task.java
+---------
+
+package models;
+
+import interfaces.Reportable;
+
+public class task extends issue implements Reportable{
+   private String assignedto;
+   private String duedate;
+    public task(int id, String title, String raisedperson, String desc,String assignedto,String duedate) {
+        super(id, title, raisedperson, desc);
+        this.assignedto=assignedto;
+        this.duedate=duedate;
+    }
+    public String getAssignedto() {
+        return assignedto;
+    }
+    public String getDuedate() {
+        return duedate;
+    }
+    @Override
+    public void display(){
+        super.display();
+    }
+    @Override
+    public void reportstatus(){
+          System.out.println("Issue ID: "+getId()+" Assigned To: "+getAssignedto()+" Status: "+getStatus());
+    }
+   
+
+}
+
+
+IssueTrackerApplication.java
+----------------------------
+
+package main;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import models.bug;
+import models.issue;
+import models.task;
+
+public class IssueTrackerApplication {
+    public static void main(String[]args){
+        List<issue> l=new ArrayList<>();
+        l.add(new bug(100,"ui issue","Lokesh","sometimes ui is not responding properly","medium"));
+        l.get(0).closestat();
+        l.add(new bug(101,"firewall issue","hari","it allows spam websites to intrude","high"));
+        l.add(new bug(102,"vpn issue","adrin","Disconnects often","low"));
+        l.add(new task(103,"Setup Logging","Lokesh","configure SLF4J and Logback for console and file outputs","Developer1","25-07-2025"));
+        l.add(new task(104,"Enable Debug Mode","hari","iactivate debug flag to print SQL queries at runtime","Developer2","24-07-2025"));
+        l.get(4).closestat();
+        l.add(new task(105,"Send Test Email","adrin"," trigger the email service to send a welcome message to test@xyz.com","Developer3","26-07-2025"));
+        System.out.println("DETAILS: ");
+        for(issue ent:l){
+            ent.display();
+        }
+        System.out.println("REPORT: ");
+        for(issue ent:l){
+           ent.reportstatus();
+        }
+        System.out.println("---------------------------------------------------------");
+
+    }
+}
+
+
+.gitignore
+----------
+
+echo ".idea/
+target/
+*.iml
+*.class
+*.jar
+*.war
+*.log
+*.tmp
+.DS_Store"
+
+
+
+
+
+
