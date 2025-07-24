@@ -198,6 +198,55 @@ target/
 *.tmp
 .DS_Store"
 
+Output
+------
+
+DETAILS: 
+Issue Id: 100
+Issue Title: ui issue
+Issue Description: sometimes ui is not responding properly
+Issue Status: Closed
+Ticket Raised By: Lokesh
+---------------------------------------------------------
+Issue Id: 101
+Issue Title: firewall issue
+Issue Description: it allows spam websites to intrude
+Issue Status: Open
+Ticket Raised By: hari
+---------------------------------------------------------
+Issue Id: 102
+Issue Title: vpn issue
+Issue Description: Disconnects often
+Issue Status: Open
+Ticket Raised By: adrin
+---------------------------------------------------------
+Issue Id: 103
+Issue Title: Setup Logging
+Issue Description: configure SLF4J and Logback for console and file outputs
+Issue Status: Open
+Ticket Raised By: Lokesh
+---------------------------------------------------------
+Issue Id: 104
+Issue Title: Enable Debug Mode
+Issue Description: iactivate debug flag to print SQL queries at runtime
+Issue Status: Closed
+Ticket Raised By: hari
+---------------------------------------------------------
+Issue Id: 105
+Issue Title: Send Test Email
+Issue Description:  trigger the email service to send a welcome message to test@xyz.com        
+Issue Status: Open
+Ticket Raised By: adrin
+---------------------------------------------------------
+REPORT:
+Issue ID: 100 Severity Level: medium Status: Closed
+Issue ID: 101 Severity Level: high Status: Open
+Issue ID: 102 Severity Level: low Status: Open
+Issue ID: 103 Assigned To: Developer1 Status: Open
+Issue ID: 104 Assigned To: Developer2 Status: Closed
+Issue ID: 105 Assigned To: Developer3 Status: Open
+---------------------------------------------------------
+
 
 
 
